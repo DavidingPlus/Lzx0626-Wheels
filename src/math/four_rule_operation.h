@@ -1,5 +1,5 @@
-#ifndef _MATH_H_
-#define _MATH_H_
+#ifndef _FOUR_RULE_OPERATION_H_
+#define _FOUR_RULE_OPERATION_H_
 
 #include <exception>
 #include <iostream>
