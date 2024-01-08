@@ -48,12 +48,9 @@ foreach(subdir ${SUBDIRS})
             DESTINATION /usr/include/lzx0626/${libname}
             FILES_MATCHING PATTERN "*.h")
 
-    # 安装静态库到 /usr/include/lzx0626/lib 目录
+    # 安装静态库到 /lib64 目录
     install(TARGETS lzx0626${libname}
-            ARCHIVE DESTINATION /usr/include/lzx0626/lib)
-
-    # 安装到 /lib64 目录
-    install(CODE "execute_process(COMMAND cp ${CMAKE_BINARY_DIR}/lib/liblzx0626${libname}.a /lib64)")
+            ARCHIVE DESTINATION /lib64)
 
 endforeach()
 
