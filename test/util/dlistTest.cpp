@@ -10,7 +10,7 @@ struct foo;
 std::ostream& operator<<(std::ostream& os, const foo& f);
 
 template <typename value_t>
-void print_l(dlist<value_t>& l);
+void print_l(lzx0626::dlist<value_t>& l);
 
 template <typename iterator>
 void print_l(iterator first, iterator last);
@@ -20,13 +20,13 @@ void print_l(iterator first, iterator last);
  *
  */
 TEST(dlistTest, dlistTest1) {
-    dlist<int> l{1, 2, 3, 4, 5, 6};
+    lzx0626::dlist<int> l{1, 2, 3, 4, 5, 6};
     print_l(l);
 
     l.traverse([](int& val) { std::cout << val << ' '; });
     std::cout << std::endl;
 
-    dlist<char> l2{'A', 'B', 'C'};
+    lzx0626::dlist<char> l2{'A', 'B', 'C'};
     print_l(l2);
 
     l.traverse([](auto& val) { ++val; });
@@ -39,9 +39,9 @@ TEST(dlistTest, dlistTest1) {
  *
  */
 TEST(dlistTest, dlistTest2) {
-    dlist<int> l{1, 2, 3, 4, 5, 6};
+    lzx0626::dlist<int> l{1, 2, 3, 4, 5, 6};
 
-    dlist<int> l2;
+    lzx0626::dlist<int> l2;
     l2 = l;   // 拷贝赋值(拷贝构造是对的，因为调用的拷贝赋值)
     l2 = l2;  // 检测自我赋值
     print_l(l2);
@@ -53,7 +53,7 @@ TEST(dlistTest, dlistTest2) {
  */
 TEST(dlistTest, dlistTest3) {
     // 测试复杂类型
-    dlist<foo> l3;
+    lzx0626::dlist<foo> l3;
     for (int i = 1; i <= 10; ++i) {
         // l3.push_back(foo{i, i * 1.23});
         l3.emplace_back(i, i * 1.23);
@@ -66,7 +66,7 @@ TEST(dlistTest, dlistTest3) {
  *
  */
 TEST(dlistTest, dlistTest4) {
-    dlist<foo> l;
+    lzx0626::dlist<foo> l;
     for (int i = 1; i <= 10; ++i) {
         l.emplace_back(i, i * 1.23);
     }
@@ -98,7 +98,7 @@ std::ostream& operator<<(std::ostream& os, const foo& f) {
 }
 
 template <typename value_t>
-void print_l(dlist<value_t>& l) {
+void print_l(lzx0626::dlist<value_t>& l) {
     l.traverse([](auto& val) { std::cout << val << ' '; });
     std::cout << std::endl;
 }
