@@ -18,7 +18,8 @@
 - 关于`gcc`的版本
 
   - 最少是`c++20`，也就是`g++13`，因为我可能会用一些`c++20`的新特性，也算是磨练自己吧
-  - `g++13`需要`Ubuntu23.04`以上（我的是`Ubuntu`，其他的请自行查找资料）的系统版本，可参考我的老师白老师的博客：[baizj.gitee.io/c/c++开发环境/2022/01/01/04-维护和配置Linux.html#part-2升级ubuntu内核到最新版本](https://baizj.gitee.io/c/c++开发环境/2022/01/01/04-维护和配置Linux.html#part-2升级ubuntu内核到最新版本)
+  - `g++13`需要`Ubuntu23.04`以上（我的是`Ubuntu`，其他的请自行查找资料）的系统版本，可参考我的老师白老师的博客
+    - [baizj.gitee.io/c/c++开发环境/2022/01/01/04-维护和配置Linux.html#part-2升级ubuntu内核到最新版本](https://baizj.gitee.io/c/c++开发环境/2022/01/01/04-维护和配置Linux.html#part-2升级ubuntu内核到最新版本)
 
 - 关于头文件和静态库
 
