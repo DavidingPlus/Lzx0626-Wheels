@@ -55,7 +55,7 @@ foreach(subdir ${SUBDIRS})
 endforeach()
 
 # -------------------snippet测试目录构建，dev分支启用，main分支不启用--------------------
-option(enable_snippet "enable snippet" ON)
+option(enable_snippet "enable snippet" OFF)
 
 if(enable_snippet)
     message("snippet is enabled...")
@@ -65,7 +65,7 @@ else()
 endif()
 
 # -------------------test测试目录构建，dev分支启用，main分支不启用--------------------
-option(enable_gtest "enable gtest" ON)
+option(enable_gtest "enable gtest" OFF)
 
 if(enable_gtest)
     message("gtest is enabled...")

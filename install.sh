@@ -14,6 +14,8 @@ echo "Deleting static library successfully."
 # 2.通过CMake工具构建编译
 if [ ! -d "build" ]; then
     mkdir build
+else
+    rm -rf build/*
 fi
 
 cd build
