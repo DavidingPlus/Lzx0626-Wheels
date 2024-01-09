@@ -31,26 +31,29 @@ foreach(subdir ${SUBDIRS})
     # 获取子目录的名称（假设子目录名即为库名）
     get_filename_component(libname ${subdir} NAME)
 
-    # 添加当前子目录下的所有源文件
-    file(GLOB lib_sources "${subdir}/*.cpp" "${subdir}/*.h")
+    # 添加当前子目录下的所有源文件，不包括 README.md
+    file(GLOB_RECURSE lib_sources "${subdir}/*.cpp" "${subdir}/*.h" EXCLUDE "${subdir}/README.md")
 
-    # 生成对应的静态库
-    add_library(lzx0626${libname} STATIC ${lib_sources})
+    # 仅在有源文件时生成对应的静态库
+    if(lib_sources)
+        # 生成对应的静态库
+        add_library(lzx0626${libname} STATIC ${lib_sources})
 
-    # 设置生成的静态库输出路径为 lib 目录下
-    set_target_properties(lzx0626${libname} PROPERTIES
-                          ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+        # 设置生成的静态库输出路径为 lib 目录下
+        set_target_properties(lzx0626${libname} PROPERTIES
+                              ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
 
-    # -------------------编写sudo make install命令，方便后续安装-------------------
+        # -------------------编写sudo make install命令，方便后续安装-------------------
 
-    # 安装头文件到 /usr/include/lzx0626/${libname} 目录
-    install(DIRECTORY ${subdir}/
-            DESTINATION /usr/include/lzx0626/${libname}
-            FILES_MATCHING PATTERN "*.h")
+        # 安装头文件到 /usr/include/lzx0626/${libname} 目录
+        install(DIRECTORY ${subdir}/
+                DESTINATION /usr/include/lzx0626/${libname}
+                FILES_MATCHING PATTERN "*.h")
 
-    # 安装静态库到 /lib64 目录
-    install(TARGETS lzx0626${libname}
-            ARCHIVE DESTINATION /lib64)
+        # 安装静态库到 /lib64 目录
+        install(TARGETS lzx0626${libname}
+                ARCHIVE DESTINATION /lib64)
+    endif()
 
 endforeach()
 
