@@ -29,6 +29,12 @@ foreach(test_dir ${TEST_SUBDIRS})
 
         include_directories(${src_include_dirs})
 
+        # 遍历链接所有静态库
+        file(GLOB LIBRARIES ${CMAKE_BINARY_DIR}/lib/lzx0626*.a)
+        foreach(library ${LIBRARIES})
+            target_link_libraries(gtest_${test_name} PRIVATE ${library})
+        endforeach()
+
         # 链接 Google Test 和其他库
         target_link_libraries(gtest_${test_name} PRIVATE gtest gtest_main lzx0626${test_dir})
 
