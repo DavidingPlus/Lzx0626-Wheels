@@ -55,3 +55,6 @@ endforeach()
 
 # -------------------snippet测试目录构建--------------------
 add_subdirectory(snippet)
+
+# -------------------test测试目录构建--------------------
+add_subdirectory(test)
