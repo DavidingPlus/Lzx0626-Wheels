@@ -1,5 +1,7 @@
 #include <gtest/gtest.h>
 
+#include <iostream>
+
 #include "four_rule_operation.h"
 
 /**
@@ -39,4 +41,10 @@ TEST(mathTest, divTest) {
  */
 TEST(mathTest, divFailTest) {
     EXPECT_ANY_THROW(lzx0626::div(3, 0));
+
+    try {
+        lzx0626::div(3, 0);
+    } catch (std::exception& e) {
+        std::cerr << e.what() << '\n';
+    }
 }
