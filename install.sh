@@ -12,12 +12,12 @@ sudo rm -rf /lib64/liblzx0626*.a
 echo "Delete static library successfully."
 
 # 2.通过CMake工具构建编译
-if [ ! -d "build" ]; then
-    mkdir build
-else
-    rm -rf build/*
+if [ -d "build" ]; then
+    rm -rf build
+    echo "Build directory deleted, now creating a new one..."
 fi
 
+mkdir build
 cd build
 cmake ..
 make
