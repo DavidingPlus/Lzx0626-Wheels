@@ -1,7 +1,15 @@
 # 本脚本是一个自动安装脚本，也可以自己手动编译
 
 # 1.卸载旧版本
-./uninstall.sh
+# 删除/usr/include/lzx0626目录
+sudo rm -rf /usr/include/lzx0626
+
+echo "Deleting header file successfully."
+
+# 删除/lib64目录中的liblzx0626*.a文件
+sudo rm -rf /lib64/liblzx0626*.a
+
+echo "Deleting static library successfully."
 
 # 2.通过CMake工具构建编译
 if [ ! -d "build" ]; then
