@@ -1,4 +1,4 @@
-message(STATUS "configuring snippet...")
+message(STATUS "Configuring snippet...")
 
 # 获取 snippet 目录下所有子目录
 file(GLOB TEST_SUBDIRS "${CMAKE_CURRENT_SOURCE_DIR}/*")

@@ -1,4 +1,4 @@
-message(STATUS "configuring gtest...")
+message(STATUS "Configuring gtest...")
 
 # 获取 test 目录下所有子目录
 file(GLOB TEST_SUBDIRS RELATIVE ${CMAKE_CURRENT_SOURCE_DIR} *)
