@@ -12,7 +12,7 @@ project(MyProject)
 # 内存消毒器，master版本的分支用来发布，不需要添加
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer")
 
-# 设置CMake_Build_Type，master分支为Release，其他为Debug
+# 设置CMake_Build_Type，都用Debug好了
 set(CMAKE_BUILD_TYPE Debug)
 
 # 设置 C++ 标准
