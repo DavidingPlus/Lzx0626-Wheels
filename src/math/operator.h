@@ -2,7 +2,7 @@
  * @file operator.h
  * @author lzx0626 (2065666169@qq.com)
  * @brief 运算符相关函数头文件（用作测试）
- * @version 0.1
+ * @version 1.0
  * @date 2024-01-09
  *
  * Copyright (c) 2023 电子科技大学 刘治学
