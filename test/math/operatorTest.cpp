@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "four_rule_operation.h"
+#include "operator.h"
 
 /**
  * @brief 加法测试

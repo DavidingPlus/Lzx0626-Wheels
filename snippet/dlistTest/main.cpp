@@ -3,6 +3,31 @@
 
 #include "dlist.h"
 
+// 提前声明一些结构体和函数
+struct foo;
+
+std::ostream& operator<<(std::ostream& os, const foo& f);
+
+template <typename value_t>
+void print_l(lzx0626::dlist<value_t>& l);
+
+template <typename iterator>
+void print_l(iterator first, iterator last);
+
+void test1();
+void test2();
+void test3();
+void test4();
+
+int main() {
+    test1();
+    // test2();
+    // test3();
+    // test4();
+
+    return 0;
+}
+
 // 增加一个复杂类型
 struct foo {
     int i;
@@ -84,13 +109,4 @@ void test4() {
     print_l(l.begin() + 3, l.end() - 2);
 
     print_l(l.rbegin() + 3, l.rend() - 2);
-}
-
-int main() {
-    // test1();
-    // test2();
-    // test3();
-    test4();
-
-    return 0;
 }

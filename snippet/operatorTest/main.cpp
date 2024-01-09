@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "four_rule_operation.h"
+#include "operator.h"
 
 void test1();
 void test2();
