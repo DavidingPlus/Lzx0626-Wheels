@@ -1,8 +1,8 @@
 /**
  * @file arraylist.h
  * @author lzx0626 (2065666169@qq.com)
- * @brief 用数组实现的双向链表的头文件
- * @version 0.1
+ * @brief 用数组实现的列表的头文件
+ * @version 1.0
  * @date 2024-01-09
  *
  * Copyright (c) 2023 电子科技大学 刘治学
@@ -133,7 +133,7 @@ public:
     }
 
     /**
-     * @brief 删除末尾的元素4
+     * @brief 删除末尾的元素
      * @return value_type类型的删除的元素的值
      */
     value_type pop_back() { return remove(_size - 1); }
