@@ -18,8 +18,9 @@ set(CMAKE_BUILD_TYPE Release)
 # 设置 C++ 标准
 set(CMAKE_CXX_STANDARD 20)
 
-# -------------------src目录静态库构建--------------------
+# -------------------src目录静态库构建，每个分支都必须启用--------------------
 # 不隔离开来是因为不想在build下面生成src目录，而是直接生成lib目录
+message("building src static library...")
 
 # 获取 src 目录下所有子目录
 file(GLOB SUBDIRS "src/*")
@@ -53,8 +54,22 @@ foreach(subdir ${SUBDIRS})
 
 endforeach()
 
-# -------------------snippet测试目录构建--------------------
-add_subdirectory(snippet)
+# -------------------snippet测试目录构建，dev分支启用，main分支不启用--------------------
+option(enable_snippet "enable snippet" ON)
 
-# -------------------test测试目录构建--------------------
-add_subdirectory(test)
+if(enable_snippet)
+    message("snippet is enabled...")
+    add_subdirectory(snippet)
+else()
+    message("snippet is not enabled...")
+endif()
+
+# -------------------test测试目录构建，dev分支启用，main分支不启用--------------------
+option(enable_gtest "enable gtest" ON)
+
+if(enable_gtest)
+    message("gtest is enabled...")
+    add_subdirectory(test)
+else()
+    message("gtest is not enabled...")
+endif()
