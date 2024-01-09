@@ -37,8 +37,8 @@ foreach(test_dir ${TEST_SUBDIRS})
             target_link_libraries(gtest_${test_name} PRIVATE ${library})
         endforeach()
 
-        # 链接 Google Test 和其他库
-        target_link_libraries(gtest_${test_name} PRIVATE gtest gtest_main lzx0626${test_dir})
+        # 链接Google Test库
+        target_link_libraries(gtest_${test_name} PRIVATE gtest gtest_main)
 
     endif()
 endforeach()

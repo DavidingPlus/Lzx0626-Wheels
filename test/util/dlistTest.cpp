@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "dlist.h"
+#include "operator.h"
 
 // 一些结构体和函数的声明，定义在后面
 struct foo;
@@ -80,6 +81,16 @@ TEST(dlistTest, dlistTest4) {
     print_l(l.begin() + 3, l.end() - 2);
 
     print_l(l.rbegin() + 3, l.rend() - 2);
+}
+
+/**
+ * @brief 做一个库关联性的测试
+ *
+ */
+TEST(dlistTest, operatorTest) {
+    EXPECT_EQ(lzx0626::add(1, 2), 3);
+
+    EXPECT_ANY_THROW(lzx0626::div(3, 0));
 }
 
 struct foo {

@@ -17,29 +17,39 @@
 
 namespace lzx0626 {
 
-// 这四个四则运算是用作测试的，没有加模板
-
 /**
  * @brief 加法运算
  *
+ * @param num1 数1
+ * @param num2 数2
+ * @return auto 类型自动推导
  */
 auto add(auto num1, auto num2) { return num1 + num2; }
 
 /**
  * @brief 减法运算
  *
+ * @param num1 数1
+ * @param num2 数2
+ * @return auto 类型自动推导
  */
 auto sub(auto num1, auto num2) { return num1 - num2; }
 
 /**
  * @brief 乘法运算
  *
+ * @param num1 数1
+ * @param num2 数2
+ * @return auto 类型自动推导
  */
 auto mul(auto num1, auto num2) { return num1 * num2; }
 
 /**
  * @brief 除法运算
  *
+ * @param num1 数1
+ * @param num2 数2
+ * @return auto 类型自动推导
  */
 auto div(auto num1, auto num2) {
     if (0 == num2)
