@@ -12,8 +12,8 @@ project(MyProject)
 # 内存消毒器，master版本的分支用来发布，不需要添加
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer")
 
-# 设置CMake_Build_Type，master分支为Release，其他分支为Debug
-set(CMAKE_BUILD_TYPE Release)
+# 设置CMake_Build_Type，都用Debug好了
+set(CMAKE_BUILD_TYPE Debug)
 
 # 设置 C++ 标准
 set(CMAKE_CXX_STANDARD 20)
@@ -31,8 +31,11 @@ foreach(subdir ${SUBDIRS})
     # 获取子目录的名称（假设子目录名即为库名）
     get_filename_component(libname ${subdir} NAME)
 
-    # 添加当前子目录下的所有源文件，不包括 README.md
-    file(GLOB_RECURSE lib_sources "${subdir}/*.cpp" "${subdir}/*.h" EXCLUDE "${subdir}/README.md")
+    # 添加当前子目录下的所有源文件
+    file(GLOB_RECURSE lib_sources "${subdir}/*.cpp" "${subdir}/*.h")
+
+    # 过滤掉 README.md 文件
+    list(FILTER lib_sources EXCLUDE REGEX "/README\\.md$")
 
     # 仅在有源文件时生成对应的静态库
     if(lib_sources)
