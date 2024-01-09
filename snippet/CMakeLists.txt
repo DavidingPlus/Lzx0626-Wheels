@@ -9,7 +9,7 @@ foreach(test_dir ${TEST_SUBDIRS})
     # 获取测试目录的名称
     get_filename_component(test_name ${test_dir} NAME)
 
-    # 检查是否存在 .buildme 文件
+    # 检查是否存在 .buildme 文件，这一步已经过滤掉了README.md，后续不需要进一步操作了
     if(EXISTS "${test_dir}/.buildme")
         # 添加当前测试目录下的所有源文件
         file(GLOB test_sources "${test_dir}/*.cpp")
@@ -30,9 +30,6 @@ foreach(test_dir ${TEST_SUBDIRS})
             # 添加当前子目录下的所有源文件
             file(GLOB_RECURSE lib_sources "${subdir}/*.cpp" "${subdir}/*.h")
 
-            # 过滤掉 README.md 文件
-            list(FILTER lib_sources EXCLUDE REGEX "/README\\.md$")
-
             # 仅在有源文件时链接静态库（因为我设置了_null.cpp，所以都是有的）
             if(lib_sources)
                 # 链接静态库
@@ -44,8 +41,6 @@ foreach(test_dir ${TEST_SUBDIRS})
             endif()
 
         endforeach()
-    else()
-        message(STATUS "Skipping ${test_name} as .buildme file is not present.")
     endif()
 
 endforeach()
