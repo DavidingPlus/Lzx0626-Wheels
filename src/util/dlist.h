@@ -6,6 +6,8 @@
 #include <initializer_list>
 #include <iostream>
 
+namespace lzx0626 {
+
 // 类型隔离，很方便的转化为类模板
 // using value_type = int;
 
@@ -564,5 +566,7 @@ public:
         return reverse_iterator(head);
     }
 };
+
+}  // namespace lzx0626
 
 #endif
