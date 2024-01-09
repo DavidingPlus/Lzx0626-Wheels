@@ -1,7 +1,7 @@
 /**
  * @file dlist.h
  * @author lzx0626 (2065666169@qq.com)
- * @brief 双向链表类
+ * @brief 老白上课时候写的双向链表类
  * @version 0.1
  * @date 2024-01-09
  *
@@ -23,7 +23,7 @@ namespace lzx0626 {
 // using value_type = int;
 
 /**
- * @brief 自己写的一个双向链表模板
+ * @brief 老白上课写的一个双向链表模板
  *
  * @tparam value_t
  */
