@@ -32,14 +32,20 @@ foreach(subdir ${SUBDIRS})
     get_filename_component(libname ${subdir} NAME)
 
     # 添加当前子目录下的所有源文件
-    file(GLOB lib_sources "${subdir}/*.cpp" "${subdir}/*.h")
+    file(GLOB_RECURSE lib_sources "${subdir}/*.cpp" "${subdir}/*.h")
 
-    # 生成对应的静态库
-    add_library(lzx0626${libname} STATIC ${lib_sources})
+    # 过滤掉 README.md 文件
+    list(FILTER lib_sources EXCLUDE REGEX "/README\\.md$")
 
-    # 设置生成的静态库输出路径为 lib 目录下
-    set_target_properties(lzx0626${libname} PROPERTIES
-                          ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+    # 仅在有源文件时生成对应的静态库
+    if(lib_sources)
+        # 生成对应的静态库
+        add_library(lzx0626${libname} STATIC ${lib_sources})
+
+        # 设置生成的静态库输出路径为 lib 目录下
+        set_target_properties(lzx0626${libname} PROPERTIES
+                              ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+    endif()
 
 endforeach()
 

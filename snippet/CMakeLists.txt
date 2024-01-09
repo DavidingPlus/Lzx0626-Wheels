@@ -27,11 +27,21 @@ foreach(test_dir ${TEST_SUBDIRS})
             # 获取子目录的名称（假设子目录名即为库名）
             get_filename_component(libname ${subdir} NAME)
 
-            # 链接静态库
-            target_link_libraries(${test_name} lzx0626${libname})
+            # 添加当前子目录下的所有源文件
+            file(GLOB_RECURSE lib_sources "${subdir}/*.cpp" "${subdir}/*.h")
 
-            # 包含头文件路径
-            target_include_directories(${test_name} PRIVATE ${CMAKE_SOURCE_DIR}/src/${libname})
+            # 过滤掉 README.md 文件
+            list(FILTER lib_sources EXCLUDE REGEX "/README\\.md$")
+
+            # 仅在有源文件时链接静态库（因为我设置了_null.cpp，所以都是有的）
+            if(lib_sources)
+                # 链接静态库
+                # 这里搜索静态库的名称是通过src来的而不是通过build/lib是因为顺便就把头文件包含了
+                target_link_libraries(${test_name} lzx0626${libname})
+
+                # 包含头文件路径
+                target_include_directories(${test_name} PRIVATE ${CMAKE_SOURCE_DIR}/src/${libname})
+            endif()
 
         endforeach()
     else()

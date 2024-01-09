@@ -1,3 +1,14 @@
+/**
+ * @file dlist.h
+ * @author lzx0626 (2065666169@qq.com)
+ * @brief 双向链表类
+ * @version 0.1
+ * @date 2024-01-09
+ *
+ * Copyright (c) 2023 电子科技大学 刘治学
+ *
+ */
+
 #ifndef _DLIST_H_
 #define _DLIST_H_
 
