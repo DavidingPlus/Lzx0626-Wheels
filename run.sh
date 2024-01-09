@@ -1,10 +1,9 @@
 # 自动化测试脚本
-if [ -d "build" ]; then
-    rm -rf build
+if [ ! -d "build" ]; then
+    mkdir build
     echo "Build directory deleted, now creating a new one..."
 fi
 
-mkdir build
 cd build
-cmake ..
+cmake -Denable_snippet=ON -Denable_gtest=ON ..
 make -j6
