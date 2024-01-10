@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-#include "dlist.h"
+#include "linkedlist.h"
 #include "operator.h"
 
 // 一些结构体和函数的声明，定义在后面
@@ -11,7 +11,7 @@ struct foo;
 std::ostream& operator<<(std::ostream& os, const foo& f);
 
 template <typename value_t>
-void print_l(lzx0626::dlist<value_t>& l);
+void print_l(lzx0626::linkedlist<value_t>& l);
 
 template <typename iterator>
 void print_l(iterator first, iterator last);
@@ -20,14 +20,14 @@ void print_l(iterator first, iterator last);
  * @brief 测试1
  *
  */
-TEST(dlistTest, dlistTest1) {
-    lzx0626::dlist<int> l{1, 2, 3, 4, 5, 6};
+TEST(linkedlistTest, linkedlistTest1) {
+    lzx0626::linkedlist<int> l{1, 2, 3, 4, 5, 6};
     print_l(l);
 
     l.traverse([](int& val) { std::cout << val << ' '; });
     std::cout << std::endl;
 
-    lzx0626::dlist<char> l2{'A', 'B', 'C'};
+    lzx0626::linkedlist<char> l2{'A', 'B', 'C'};
     print_l(l2);
 
     l.traverse([](auto& val) { ++val; });
@@ -39,10 +39,10 @@ TEST(dlistTest, dlistTest1) {
  * @brief 测试2
  *
  */
-TEST(dlistTest, dlistTest2) {
-    lzx0626::dlist<int> l{1, 2, 3, 4, 5, 6};
+TEST(linkedlistTest, linkedlistTest2) {
+    lzx0626::linkedlist<int> l{1, 2, 3, 4, 5, 6};
 
-    lzx0626::dlist<int> l2;
+    lzx0626::linkedlist<int> l2;
     l2 = l;   // 拷贝赋值(拷贝构造是对的，因为调用的拷贝赋值)
     l2 = l2;  // 检测自我赋值
     print_l(l2);
@@ -52,9 +52,9 @@ TEST(dlistTest, dlistTest2) {
  * @brief 测试3
  *
  */
-TEST(dlistTest, dlistTest3) {
+TEST(linkedlistTest, linkedlistTest3) {
     // 测试复杂类型
-    lzx0626::dlist<foo> l3;
+    lzx0626::linkedlist<foo> l3;
     for (int i = 1; i <= 10; ++i) {
         // l3.push_back(foo{i, i * 1.23});
         l3.emplace_back(i, i * 1.23);
@@ -66,8 +66,8 @@ TEST(dlistTest, dlistTest3) {
  * @brief 测试4
  *
  */
-TEST(dlistTest, dlistTest4) {
-    lzx0626::dlist<foo> l;
+TEST(linkedlistTest, linkedlistTest4) {
+    lzx0626::linkedlist<foo> l;
     for (int i = 1; i <= 10; ++i) {
         l.emplace_back(i, i * 1.23);
     }
@@ -87,7 +87,7 @@ TEST(dlistTest, dlistTest4) {
  * @brief 做一个库关联性的测试
  *
  */
-TEST(dlistTest, operatorTest) {
+TEST(linkedlistTest, operatorTest) {
     EXPECT_EQ(lzx0626::add(1, 2), 3);
 
     EXPECT_ANY_THROW(lzx0626::div(3, 0));
@@ -109,7 +109,7 @@ std::ostream& operator<<(std::ostream& os, const foo& f) {
 }
 
 template <typename value_t>
-void print_l(lzx0626::dlist<value_t>& l) {
+void print_l(lzx0626::linkedlist<value_t>& l) {
     l.traverse([](auto& val) { std::cout << val << ' '; });
     std::cout << std::endl;
 }

@@ -1,7 +1,7 @@
 /**
  * @file arraylist.h
  * @author lzx0626 (2065666169@qq.com)
- * @brief 用数组实现的列表的头文件
+ * @brief 用数组实现的列表类的头文件
  * @version 1.0
  * @date 2024-01-09
  *
@@ -19,7 +19,7 @@
 
 namespace lzx0626 {
 /**
- * @brief 用数组实现的一个双向链表模板
+ * @brief 底层用数组实现的列表类
  */
 template <class value_type>
 class arraylist {

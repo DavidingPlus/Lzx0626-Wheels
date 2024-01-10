@@ -1,7 +1,7 @@
 /**
- * @file dlist.h
+ * @file linkedlist.h
  * @author lzx0626 (2065666169@qq.com)
- * @brief 老白上课时候写的双向链表类
+ * @brief 底层用双向链表实现的列表类的头文件
  * @version 1.0
  * @date 2024-01-09
  *
@@ -9,8 +9,8 @@
  *
  */
 
-#ifndef _DLIST_H_
-#define _DLIST_H_
+#ifndef _LINKEDLIST_H_
+#define _LINKEDLIST_H_
 
 #include <exception>
 #include <format>
@@ -23,12 +23,12 @@ namespace lzx0626 {
 // using value_type = int;
 
 /**
- * @brief 老白上课写的一个双向链表模板
+ * @brief 老白上课写的双向链表类，非常完善
  *
  * @tparam value_t
  */
 template <typename value_t>
-class dlist {
+class linkedlist {
 public:
     /**
      * @brief 定义一些类型
@@ -42,14 +42,14 @@ public:
     /**
      * @brief 默认构造函数
      */
-    dlist() noexcept {
+    linkedlist() noexcept {
         _init();
     }
 
     /**
      * @brief 构造函数，后面放了一个构造函数委托，在这个函数执行之前先执行被委托的函数
      */
-    dlist(const std::initializer_list<value_type>& l) noexcept : dlist() {
+    linkedlist(const std::initializer_list<value_type>& l) noexcept : linkedlist() {
         for (auto& v : l)
             push_back(v);
     }
@@ -57,7 +57,7 @@ public:
     /**
      * @brief 析构函数
      */
-    ~dlist() noexcept {
+    ~linkedlist() noexcept {
         _clear();
     }
 
@@ -65,16 +65,16 @@ public:
      * @brief 拷贝构造函数，因为类成员里面含有指针
      * @param other，另一个对象
      */
-    dlist(const dlist& other) noexcept {
+    linkedlist(const linkedlist& other) noexcept {
         *this = other;
     }
 
     /**
      * @brief 拷贝赋值函数，理由同上
      * @param other，另一个对象
-     * @return dlist类型的对象引用
+     * @return linkedlist类型的对象引用
      */
-    dlist& operator=(const dlist& other) noexcept {
+    linkedlist& operator=(const linkedlist& other) noexcept {
         // 检测自我赋值
         if (this == &other)
             return *this;
@@ -94,17 +94,17 @@ public:
     /**
      * @brief 移动构造函数，处理右值引用的将亡对象
      */
-    dlist(dlist&& other) noexcept {
+    linkedlist(linkedlist&& other) noexcept {
         *this = other;
     }
 
     /**
      * @brief 移动拷贝函数，同上
      * @param other，另一个对象
-     * @return dlist类型的对象引用
+     * @return linkedlist类型的对象引用
      */
-    dlist& operator=(dlist&& other) noexcept {
-        // 移动构造不用下面的两个代码会报错：dlist l(l2);
+    linkedlist& operator=(linkedlist&& other) noexcept {
+        // 移动构造不用下面的两个代码会报错：linkedlist l(l2);
         // 为了让移动构造不报错，我还是先清空，反正会被将亡对象清除
         _clear();
         _init();
@@ -201,7 +201,7 @@ public:
     }
 
     /**
-     * @brief 在位插入
+     * @brief 载位插入
      * @tparam types
      * @param  args
      */
@@ -248,7 +248,7 @@ public:
         if (!p)
             throw(std::out_of_range(std::format("emplace postion {} was out of range", pos)));
         // 没有异常则正常插入
-        auto q = new node{args...};  // 改成在位构造
+        auto q = new node{args...};  // 改成载位构造
         _linkbefore(p, q);
         ++length;
     } catch (std::out_of_range& e) {  // 捕获异常
@@ -275,7 +275,7 @@ public:
     /**
      * @brief 定义容器类型，作类型屏蔽
      */
-    using container_type = dlist;
+    using container_type = linkedlist;
 
     /**
      * @brief 定义指向数据的指针，作类型屏蔽
