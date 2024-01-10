@@ -1,7 +1,7 @@
 #include <format>
 #include <iostream>
 
-#include "dlist.h"
+#include "linkedlist.h"
 
 // 提前声明一些结构体和函数
 struct foo;
@@ -9,7 +9,7 @@ struct foo;
 std::ostream& operator<<(std::ostream& os, const foo& f);
 
 template <typename value_t>
-void print_l(lzx0626::dlist<value_t>& l);
+void print_l(lzx0626::linkedlist<value_t>& l);
 
 template <typename iterator>
 void print_l(iterator first, iterator last);
@@ -45,7 +45,7 @@ std::ostream& operator<<(std::ostream& os, const foo& f) {
 }
 
 template <typename value_t>
-void print_l(lzx0626::dlist<value_t>& l) {
+void print_l(lzx0626::linkedlist<value_t>& l) {
     l.traverse([](auto& val) { std::cout << val << ' '; });
     std::cout << std::endl;
 }
@@ -58,13 +58,13 @@ void print_l(iterator first, iterator last) {
 }
 
 void test1() {
-    lzx0626::dlist<int> l{1, 2, 3, 4, 5, 6};
+    lzx0626::linkedlist<int> l{1, 2, 3, 4, 5, 6};
     print_l(l);
 
     // l.traverse([](int& val) { std::cout << val << ' '; });
     // std::cout << std::endl;
 
-    lzx0626::dlist<char> l2{'A', 'B', 'C'};
+    lzx0626::linkedlist<char> l2{'A', 'B', 'C'};
     print_l(l2);
 
     l.traverse([](auto& val) { ++val; });
@@ -75,9 +75,9 @@ void test1() {
 }
 
 void test2() {
-    lzx0626::dlist<int> l{1, 2, 3, 4, 5, 6};
+    lzx0626::linkedlist<int> l{1, 2, 3, 4, 5, 6};
 
-    lzx0626::dlist<int> l2;
+    lzx0626::linkedlist<int> l2;
     l2 = l;   // 拷贝赋值(拷贝构造是对的，因为调用的拷贝赋值)
     l2 = l2;  // 检测自我赋值
     print_l(l2);
@@ -85,7 +85,7 @@ void test2() {
 
 void test3() {
     // 测试复杂类型
-    lzx0626::dlist<foo> l3;
+    lzx0626::linkedlist<foo> l3;
     for (int i = 1; i <= 10; ++i) {
         // l3.push_back(foo{i, i * 1.23});
         l3.emplace_back(i, i * 1.23);
@@ -95,7 +95,7 @@ void test3() {
 
 // 测试迭代器
 void test4() {
-    lzx0626::dlist<foo> l;
+    lzx0626::linkedlist<foo> l;
     for (int i = 1; i <= 10; ++i) {
         l.emplace_back(i, i * 1.23);
     }
