@@ -61,7 +61,7 @@ foreach(subdir ${SUBDIRS})
 endforeach()
 
 # -------------------snippet测试目录构建，dev分支启用，main分支不启用--------------------
-message(STATUS "Snippet is unenabled...")
+message(STATUS "Snippet is not enabled...")
 # add_subdirectory(snippet)
 
 # -------------------test测试目录构建，dev分支启用，main分支不启用--------------------
