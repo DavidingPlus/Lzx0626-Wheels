@@ -5,5 +5,5 @@ if [ ! -d "build" ]; then
 fi
 
 cd build
-cmake -Denable_snippet=ON -Denable_gtest=ON ..
+cmake -DENABLE_GTEST=ON ..
 make -j6
