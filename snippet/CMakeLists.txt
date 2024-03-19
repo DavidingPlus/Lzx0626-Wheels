@@ -14,8 +14,11 @@ foreach(test_dir ${TEST_SUBDIRS})
         # 添加当前测试目录下的所有源文件
         file(GLOB test_sources "${test_dir}/*.cpp")
 
+        # 这里加上 add_subdirectory ，配置写在测试目录当中
+        add_subdirectory(${test_dir})
+
         # 生成对应的可执行文件
-        add_executable(${test_name} ${test_sources})
+        # add_executable(${test_name} ${test_sources})
 
         # 设置生成的可执行文件输出路径为 build/snippet 目录下
         set_target_properties(${test_name} PROPERTIES
@@ -34,7 +37,7 @@ foreach(test_dir ${TEST_SUBDIRS})
             if(lib_sources)
                 # 链接静态库
                 # 这里搜索静态库的名称是通过src来的而不是通过build/lib是因为顺便就把头文件包含了
-                target_link_libraries(${test_name} lzx0626${libname})
+                # target_link_libraries(${test_name} lzx0626${libname})
 
                 # 包含头文件路径
                 target_include_directories(${test_name} PRIVATE ${CMAKE_SOURCE_DIR}/src/${libname})

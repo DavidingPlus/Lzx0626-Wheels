@@ -15,7 +15,7 @@ if [ ! -d "build" ]; then
 fi
 
 cd build
-cmake -Denable_gtest=OFF ..
+cmake -DENABLE_GTEST=OFF ..
 make
 
 # 3.安装
