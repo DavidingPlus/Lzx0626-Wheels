@@ -9,7 +9,7 @@ set(CMAKE_CXX_COMPILER "g++")
 # 设置项目名称
 project(MyProject)
 
-# 内存消毒器，master版本的分支用来发布，不需要添加
+# 内存消毒器，main版本的分支用来发布，不需要添加
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer")
 
 # 设置CMake_Build_Type，都用Debug好了
@@ -20,7 +20,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 # -------------------src目录静态库构建，每个分支都必须启用--------------------
 # 不隔离开来是因为不想在build下面生成src目录，而是直接生成lib目录
-message(STATUS "Configuring src to static library in lib...")
+message(STATUS "Configuring generate static library into lib...")
 
 # 获取 src 目录下所有子目录
 file(GLOB SUBDIRS "src/*")
@@ -53,12 +53,12 @@ endforeach()
 message(STATUS "Snippet is enabled...")
 add_subdirectory(snippet)
 
-# -------------------test测试目录构建，dev分支启用，main分支不启用--------------------
-option(enable_gtest "enable gtest" ON)
+# -------------------unit test测试目录构建，dev分支启用，main分支不启用--------------------
+option(ENABLE_GTEST "enable unit test" ON)
 
-if(enable_gtest)
-    message(STATUS "Gtest is enabled...")
+if(ENABLE_GTEST)
+    message(STATUS "Unit test is enabled...")
     add_subdirectory(test)
 else()
-    message(STATUS "Gtest is not enabled...")
+    message(STATUS "Unit test is not enabled...")
 endif()
