@@ -16,7 +16,7 @@ fi
 
 cd build
 cmake -DENABLE_GTEST=OFF ..
-make
+make -j 6
 
 # 3.安装
 sudo make install
