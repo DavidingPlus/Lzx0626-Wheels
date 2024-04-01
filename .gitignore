@@ -1,0 +1,5 @@
+build/
+_test.cpp
+a.out
+.vscode/
+.buildme
