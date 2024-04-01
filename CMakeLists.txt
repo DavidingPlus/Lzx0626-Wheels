@@ -20,7 +20,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 # -------------------src目录静态库构建，每个分支都必须启用--------------------
 # 不隔离开来是因为不想在build下面生成src目录，而是直接生成lib目录
-message(STATUS "Configuring generate static library into lib...")
+message(STATUS "Configure generating static library into lib...")
 
 # 获取 src 目录下所有子目录
 file(GLOB SUBDIRS "src/*")
@@ -53,8 +53,8 @@ endforeach()
 message(STATUS "Snippet is enabled...")
 add_subdirectory(snippet)
 
-# -------------------unit test测试目录构建，dev分支启用，main分支不启用--------------------
-option(ENABLE_GTEST "enable unit test" ON)
+# -------------------unit test测试目录构建，默认不启用--------------------
+option(ENABLE_GTEST "enable unit test" OFF)
 
 if(ENABLE_GTEST)
     message(STATUS "Unit test is enabled...")
