@@ -10,7 +10,7 @@ set(CMAKE_CXX_COMPILER "g++")
 project(MyProject)
 
 # 内存消毒器，main版本的分支用来发布，不需要添加
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer")
 
 # 设置CMake_Build_Type，都用Debug好了
 set(CMAKE_BUILD_TYPE Debug)
@@ -47,11 +47,13 @@ foreach(subdir ${SUBDIRS})
                               ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
     endif()
 
+    # TODO: make install
+
 endforeach()
 
 # -------------------snippet测试目录构建，dev分支启用，main分支不启用--------------------
-message(STATUS "Snippet is enabled...")
-add_subdirectory(snippet)
+# message(STATUS "Snippet is enabled...")
+# add_subdirectory(snippet)
 
 # -------------------unit test测试目录构建，默认不启用--------------------
 option(ENABLE_GTEST "enable unit test" OFF)
