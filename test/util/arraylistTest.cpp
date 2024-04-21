@@ -1,17 +1,17 @@
 #include <gtest/gtest.h>
-
 #include <iostream>
 
 #include "arraylist.h"
 
 template <typename value_type>
-void print_arraylist(lzx0626::arraylist<value_type>& array);
+void print_arraylist(lzx0626::arraylist<value_type> &array);
 
 /**
  * @brief 测试构造函数
  *
  */
-TEST(arraylistTest, constructorTest) {
+TEST(arraylistTest, constructorTest)
+{
     lzx0626::arraylist<int> al{1, 2, 3, 4, 5, 6};
     auto al2(al);
 
@@ -26,7 +26,8 @@ TEST(arraylistTest, constructorTest) {
  * @brief 测试插入
  *
  */
-TEST(arraylistTest, insertTest) {
+TEST(arraylistTest, insertTest)
+{
     lzx0626::arraylist<int> al{1, 2, 3, 4, 5, 6};
     print_arraylist(al);
 
@@ -45,7 +46,8 @@ TEST(arraylistTest, insertTest) {
  * @brief 测试移出
  *
  */
-TEST(arraylistTest, removeTest) {
+TEST(arraylistTest, removeTest)
+{
     lzx0626::arraylist<int> al{1, 2, 3, 4, 5, 6};
     print_arraylist(al);
 
@@ -60,7 +62,8 @@ TEST(arraylistTest, removeTest) {
  * @brief 测试设置
  *
  */
-TEST(arraylistTest, setTest) {
+TEST(arraylistTest, setTest)
+{
     lzx0626::arraylist<int> al{1, 2, 3, 4, 5, 6};
     print_arraylist(al);
 
@@ -75,13 +78,14 @@ TEST(arraylistTest, setTest) {
  * @brief 测试操作符[]
  *
  */
-TEST(arraylistTest, getOperatorTest) {
+TEST(arraylistTest, getOperatorTest)
+{
     lzx0626::arraylist<int> al{1, 2, 3, 4, 5, 6};
     print_arraylist(al);
 
     std::cout << "test get" << std::endl;
 
-    std::cout << al.get(0) << std::endl;  // 修改不了，因为返回的是一个右值，如果用一个变量接受就进行了一次拷贝
+    std::cout << al.get(0) << std::endl; // 修改不了，因为返回的是一个右值，如果用一个变量接受就进行了一次拷贝
     std::cout << al.get(5) << std::endl;
     // std::cout << al.get(6) << std::endl;
 
@@ -97,7 +101,9 @@ TEST(arraylistTest, getOperatorTest) {
 }
 
 template <typename value_type>
-void print_arraylist(lzx0626::arraylist<value_type>& array) {
-    array.traverse([](value_type& val) { std::cout << val << ' '; });
+void print_arraylist(lzx0626::arraylist<value_type> &array)
+{
+    array.traverse([](value_type &val)
+                   { std::cout << val << ' '; });
     std::cout << std::endl;
 }

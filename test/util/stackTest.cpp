@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-
 #include <iostream>
 
 #include "stack.h"
@@ -8,7 +7,8 @@
  * @brief 测试1
  *
  */
-TEST(stackTest, stackTest1) {
+TEST(stackTest, stackTest1)
+{
     lzx0626::stack<int> ms;
 
     EXPECT_EQ(ms.isEmpty(), true);
