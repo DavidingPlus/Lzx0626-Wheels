@@ -4,13 +4,15 @@
 
 void test1();
 
-int main() {
+int main()
+{
     test1();
 
     return 0;
 }
 
-void test1() {
+void test1()
+{
     lzx0626::stack<int> ms;
     std::cout << "ms: " << (ms.isEmpty() ? "empty" : "not empty") << std::endl;
 

@@ -1,5 +1,4 @@
 #include <gtest/gtest.h>
-
 #include <iostream>
 
 #include "queue.h"
@@ -8,7 +7,8 @@
  * @brief 测试1
  *
  */
-TEST(queueTest, queueTest1) {
+TEST(queueTest, queueTest1)
+{
     lzx0626::queue<int> mq;
 
     EXPECT_EQ(mq.isEmpty(), true);

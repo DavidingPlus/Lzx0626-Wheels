@@ -4,13 +4,15 @@
 
 void test1();
 
-int main() {
+int main()
+{
     test1();
 
     return 0;
 }
 
-void test1() {
+void test1()
+{
     lzx0626::queue<int> mq;
     std::cout << "mq: " << (mq.isEmpty() ? "empty" : "not empty") << std::endl;
 
