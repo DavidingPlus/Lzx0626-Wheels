@@ -1,6 +1,6 @@
 /**
  * @file stack.h
- * @author lzx0626 (2065666169@qq.com)
+ * @author DavidingPlus (2065666169@qq.com)
  * @brief 栈类的头文件
  * @version 1.0
  * @date 2024-01-09

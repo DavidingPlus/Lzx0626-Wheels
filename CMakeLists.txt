@@ -18,6 +18,7 @@ set(CMAKE_BUILD_TYPE Debug)
 # 设置 C++ 标准
 set(CMAKE_CXX_STANDARD 20)
 
+# TODO 现在的 CMakeLists 非常冗杂和难看，后续改造
 # -------------------src目录静态库构建，每个分支都必须启用--------------------
 # 不隔离开来是因为不想在build下面生成src目录，而是直接生成lib目录
 message(STATUS "Configure generating static library into lib...")
