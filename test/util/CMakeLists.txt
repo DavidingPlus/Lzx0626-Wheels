@@ -1,0 +1,11 @@
+file(GLOB MODULE_DIRS "${PROJECT_SOURCE_DIR}/src/*")
+foreach(MODULE_DIR ${MODULE_DIRS})
+    if(IS_DIRECTORY ${MODULE_DIR})
+        include_directories(${MODULE_DIR})
+    endif()
+endforeach()
+
+aux_source_directory (${CMAKE_CURRENT_SOURCE_DIR} SRC_GTEST_UTIL)
+add_executable (gtest_util EXCLUDE_FROM_ALL ${SRC_GTEST_UTIL})
+target_link_libraries (gtest_util lzx0626math lzx0626util gtest gtest_main pthread)
+gtest_discover_tests (gtest_util)
