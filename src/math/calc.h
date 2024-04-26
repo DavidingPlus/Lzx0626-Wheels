@@ -1,16 +1,16 @@
 /**
- * @file operator.h
+ * @file calc.h
  * @author DavidingPlus (2065666169@qq.com)
- * @brief 运算符相关函数头文件（用作测试）
- * @version 1.0
+ * @brief 运算符相关函数头文件（仅作测试）。
+ * @version 1.0.0
  * @date 2024-01-09
  *
- * Copyright (c) 2023 电子科技大学 刘治学
+ * Copyright (c) 2024 电子科技大学 刘治学
  *
  */
 
-#ifndef _OPERATOR_H_
-#define _OPERATOR_H_
+#ifndef _CALC_H_
+#define _CALC_H_
 
 #include <exception>
 #include <iostream>
