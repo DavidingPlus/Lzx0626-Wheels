@@ -6,4 +6,4 @@ fi
 
 cd build
 cmake -DENABLE_GTEST=ON ..
-make -j6
+make -j 6
