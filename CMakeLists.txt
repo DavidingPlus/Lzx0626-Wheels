@@ -1,22 +1,24 @@
 # 设置CMake最低版本
 cmake_minimum_required(VERSION 3.12)
 
-# 设置cmake编译器版本，这两条命令要放在最上面命令的下面，其他命令的前面，否则无法生效
+# 设置项目名称
+project(MyProject)
+
+# 设置 C++ 标准
+set(CMAKE_CXX_STANDARD 20)
+
 # 由于我们配置了ccache，所以这里要设置为gcc和g++，这样才能用我们配置的软连接代替系统设置的，才能进入ccache
 set(CMAKE_C_COMPILER "gcc")
 set(CMAKE_CXX_COMPILER "g++")
 
-# 设置项目名称
-project(MyProject)
+message("-- Using C Compiler: ${CMAKE_C_COMPILER} (${CMAKE_C_COMPILER_VERSION})")
+message("-- Using C++ Compiler: ${CMAKE_CXX_COMPILER} (${CMAKE_CXX_COMPILER_VERSION})")
 
 # 内存消毒器，main版本的分支用来发布，不需要添加
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer")
 
 # 设置CMake_Build_Type，都用Debug好了
 set(CMAKE_BUILD_TYPE Debug)
-
-# 设置 C++ 标准
-set(CMAKE_CXX_STANDARD 20)
 
 # TODO 现在的 CMakeLists 非常冗杂和难看，后续改造
 # -------------------src目录静态库构建，每个分支都必须启用--------------------
