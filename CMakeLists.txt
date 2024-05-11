@@ -7,12 +7,17 @@ project(MyProject)
 # 设置 C++ 标准
 set(CMAKE_CXX_STANDARD 20)
 
-# 由于我们配置了ccache，所以这里要设置为gcc和g++，这样才能用我们配置的软连接代替系统设置的，才能进入ccache
-set(CMAKE_C_COMPILER "gcc")
-set(CMAKE_CXX_COMPILER "g++")
+# 设置编译器（跨平台），并引入 Ccache
+if(CMAKE_HOST_WIN32)
+    include(config-win32.cmake)
 
-message("-- Using C Compiler: ${CMAKE_C_COMPILER} (${CMAKE_C_COMPILER_VERSION})")
-message("-- Using C++ Compiler: ${CMAKE_CXX_COMPILER} (${CMAKE_CXX_COMPILER_VERSION})")
+elseif(CMAKE_HOST_UNIX)
+    include(config-unix.cmake)
+
+else ()
+    message (FATAL_ERROR "Unknown platform.")
+
+endif ()
 
 # 内存消毒器，main版本的分支用来发布，不需要添加
 # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address -fno-omit-frame-pointer")
@@ -73,6 +78,8 @@ option(ENABLE_GTEST "enable unit test" OFF)
 if(ENABLE_GTEST)
     message(STATUS "Unit test is enabled...")
     add_subdirectory(test)
+
 else()
     message(STATUS "Unit test is not enabled...")
+    
 endif()
